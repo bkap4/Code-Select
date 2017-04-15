@@ -1,5 +1,5 @@
 
-package com.profile.models.applicants;
+package com.applicants.models;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;

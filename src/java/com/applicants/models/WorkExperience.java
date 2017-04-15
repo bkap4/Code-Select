@@ -1,5 +1,5 @@
 
-package com.profile.models.applicants;
+package com.applicants.models;
 
 import java.util.Date;
 import javax.faces.bean.ManagedBean;

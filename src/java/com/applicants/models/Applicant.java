@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.profile.models.applicants;
+package com.applicants.models;
 
 import com.profile.models.Person;
 import javax.faces.bean.ManagedBean;
