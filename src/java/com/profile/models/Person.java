@@ -5,14 +5,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 /**
- *
- * @author Barry Gray Kapelembe
+ * 
+ * @author Barry Gray Kapelembe 
  */
-@ManagedBean(name = "Person", eager = true)
+@ManagedBean (name="Person", eager= true)
 @SessionScoped
 
 public abstract class Person {
-
     private String firstname;
     private String lastname;
     private char gender;
@@ -22,13 +21,21 @@ public abstract class Person {
     private Date dateOfBirth;
     private String emailAdress;
 
-    public abstract String getFirstname();
+    public String getFirstname() {
+        return firstname;
+    }
 
-    public abstract boolean setFirstname(String firstname);
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
 
-    public abstract String getLastname();
+    public String getLastname() {
+        return lastname;
+    }
 
-    public abstract boolean setLastname(String lastname);
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
 
     public char getGender() {
         return gender;
@@ -77,8 +84,11 @@ public abstract class Person {
     public void setEmailAdress(String emailAdress) {
         this.emailAdress = emailAdress;
     }
-    public String toString (){
-        return firstname + " " + lastname;
-    }
+    
+    public abstract int getAge();
+    
+    
+    
+    
 
 }
