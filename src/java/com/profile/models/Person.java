@@ -77,5 +77,8 @@ public abstract class Person {
     public void setEmailAdress(String emailAdress) {
         this.emailAdress = emailAdress;
     }
+    public String toString (){
+        return firstname + " " + lastname;
+    }
 
 }
