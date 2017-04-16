@@ -1,4 +1,4 @@
-package com.child.profile;
+package com.child.models;
 
 import com.profile.models.Person;
 
