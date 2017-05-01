@@ -1,5 +1,5 @@
 
-package com.applicants.models;
+package com.applicants.Controller;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -1,5 +1,5 @@
 
-package com.profile.models;
+package com.models;
 
 /**
  *

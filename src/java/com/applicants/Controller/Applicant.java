@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.applicants.models;
+package com.applicants.Controller;
 
-import com.profile.models.Person;
+import com.models.Person;
+import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -27,6 +28,10 @@ public class Applicant extends Person {
     private EducationAndQualification formation;
     private ApplicantMedicalHistory healthRecord;
     private WorkExperience experience;
+
+    public Applicant(String firstname, String lastname, char gender, String phoneNumber, String address, String placeOfBirth, Date dateOfBirth, String emailAddress) {
+        super(firstname, lastname, gender, phoneNumber, address, placeOfBirth, dateOfBirth, emailAddress);
+    }
     
     public void setCity(String city) {
         this.city = city;

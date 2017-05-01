@@ -1,6 +1,7 @@
-package com.child.models;
+package com.child.Model;
 
-import com.profile.models.Person;
+import com.models.Person;
+import java.util.Date;
 
 /**
  * 
@@ -13,6 +14,39 @@ public class Child extends Person {
     private Weight weight;
     private Nappies nappy;
     private ChildMedicalHistory medicalHistory;
+    private int babyProfileid;
+    
+    /*SELECT `babyprofile`.`idBabyProfile`,
+    `babyprofile`.`firstName`,
+    `babyprofile`.`lastName`,
+    `babyprofile`.`distinguishingMarks`
+FROM `onthatile children's ministries`.`babyprofile`;
+*/
+
+    public Child(String firstname, String lastname, char gender, String placeOfBirth, Date dateOfBirth) {
+        super(firstname, lastname, gender, placeOfBirth, dateOfBirth);
+    }
+
+    public Child(String destingushingMarks, String firstname, String lastname) {
+        super(firstname, lastname);
+        this.destingushingMarks = destingushingMarks;
+    }
+
+    public Child(int babyProfileid,  String firstname, String lastname,String destingushingMarks) {
+        super(firstname, lastname);
+        this.destingushingMarks = destingushingMarks;
+        this.babyProfileid = babyProfileid;
+    }
+    
+
+    public int getBabyProfileid() {
+        return babyProfileid;
+    }
+
+    public void setBabyProfileid(int babyProfileid) {
+        this.babyProfileid = babyProfileid;
+    }
+    
 
     public ChildMedicalHistory getMedicalHistory() {
         return medicalHistory;
@@ -34,8 +68,9 @@ public class Child extends Person {
         return temp;
     }
 
-    public void setTemp(double temp) {
-        this.temp.setTemperatureReading(temp);
+    public void setTemp(Temperature temp) {
+        //this.temp.setTemperatureReading(temp);
+        this.temp = temp;
     }
 
     public Meals getMeal() {

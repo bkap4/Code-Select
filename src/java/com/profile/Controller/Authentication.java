@@ -1,5 +1,7 @@
 
-package com.profile.models;
+package com.profile.Controller;
+import com.models.Staff;
+import java.util.Date;
 import java.util.Random;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -14,6 +16,10 @@ public class Authentication extends Staff{
     
     private String userName;
     private String password;
+
+    public Authentication(String firstname, String lastname, char gender, String phoneNumber, String address, String placeOfBirth, Date dateOfBirth, String emailAddress) {
+        super(firstname, lastname, gender, phoneNumber, address, placeOfBirth, dateOfBirth, emailAddress);
+    }
     
     //All this needs to account for validation 
     public boolean setUserName(String name){

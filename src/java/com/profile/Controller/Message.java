@@ -1,5 +1,5 @@
 
-package com.profile.models;
+package com.profile.Controller;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;

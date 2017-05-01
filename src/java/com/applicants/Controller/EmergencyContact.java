@@ -1,8 +1,9 @@
 
 
-package com.applicants.models;
+package com.applicants.Controller;
 
-import com.profile.models.Person;
+import com.models.Person;
+import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -16,6 +17,10 @@ import javax.faces.bean.SessionScoped;
 public class EmergencyContact extends Person {
     
     private String relationship;
+
+    public EmergencyContact(String firstname, String lastname, String phoneNumber,  String emailAddress) {
+        super(firstname, lastname, phoneNumber,  emailAddress);
+    }
 
     public String getRelationship() {
         return relationship;

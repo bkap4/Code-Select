@@ -1,4 +1,4 @@
-package com.child.models;
+package com.child.Model;
 
 /**
  * 

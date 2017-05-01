@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <a href="WEB-INF/faces-config.xml"></a>
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Dashboard</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">
+                    Header
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="50" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="auto" header="Retract" collapsible="true">
+
+                    <h:form>
+                        <p:growl autoUpdate="true"/>
+
+                        <p:panelMenu style="width:260px">
+                            <p:submenu label="Messages">
+                                <p:menuitem value="Notice board" actionListener="#{menuView.save}" icon="ui-icon-disk" />
+                                <p:menuitem value="Alerts" actionListener="#{menuView.update}"  icon="ui-icon-fa-edit" />
+                            </p:submenu>
+
+                            <p:submenu label="Staff Management">
+                                <p:menuitem value="Add staff" actionListener="#{menuView.save}" action="addStaff" icon="ui-icon-disk" />
+                                <p:menuitem value="Edit Staff" actionListener="#{menuView.update}"  icon="ui-icon-fa-edit" />
+                            </p:submenu>
+                            <p:submenu label="Baby tracker">
+                                <p:menuitem value="View child profiles" actionListener="#{menuView.delete}" action="viewBaby" ajax="false" icon="ui-icon-close"/>
+                                <p:menuitem value="Add baby profile" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
+                                <p:menuitem value="Edit baby profile" actionListener="#{menuView.delete}"  ajax="false" icon="fa-edit"/>
+                                <p:menuitem value="Capture data" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
+                                <p:menuitem value="Generate report" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>    
+                            </p:submenu>
+                            <p:submenu label="Needs">
+                                <p:menuitem value="Add needs" actionListener="#{menuView.save}" icon="ui-icon-disk" />
+                                <p:menuitem value="View needs" actionListener="#{menuView.update}"  icon="ui-icon-fa-edit" />
+                            </p:submenu>
+                            <p:separator />
+                            <p:submenu label="Inventory" >
+                                <p:menuitem value="Add inventory" actionListener="#{menuView.save}" icon="ui-icon-disk" />
+                                <p:menuitem value="Edit stock levels" actionListener="#{menuView.update}"  icon="ui-icon-fa-edit" />
+                                <p:submenu label="Links" icon="ui-icon-extlink">
+                                    <p:submenu label="PrimeFaces" icon="ui-icon-heart">
+                                        <p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" />
+                                        <p:menuitem value="Docs" url="http://www.primefaces.org/documentation" icon="ui-icon-document" />
+                                        <p:menuitem value="Download" url="http://www.primefaces.org/downloads" icon="ui-icon-arrowthick-1-s" />
+                                        <p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
+                                    </p:submenu>
+                                </p:submenu>
+                            </p:submenu>
+                        </p:panelMenu>
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <div align="center"> 
+                        <h1>Staff memebrs</h1>
+                        <hr/>
+
+                        <!--
+                         private String firstname;
+    private String lastname;
+    private char gender;
+    private String phoneNumber;
+    private String address;
+    private String placeOfBirth;
+    private Date dateOfBirth;
+    private String emailAddress;
+                        -->
+
+                        <p:dataTable var="temp" value="#{OthantileStaffList.users}">
+                            <p:column headerText="Staff ID">
+                                <h:outputText value="#{temp.staffID}" />
+                            </p:column>
+
+                            <p:column headerText="First name">
+                                <h:outputText value="#{temp.firstname}" />
+                            </p:column>
+
+                            <p:column headerText="Last name">
+                                <h:outputText value="#{temp.lastname}" />
+                            </p:column>
+
+                            <p:column headerText="Gender">
+                                <h:outputText value="#{temp.gender}" />
+                            </p:column>
+                            <p:column headerText="Address">
+                                <h:outputText value="#{temp.address}" />
+                            </p:column>
+
+                            <p:column headerText="Place of birth">
+                                <h:outputText value="#{temp.placeOfBirth}" />
+                            </p:column>
+
+                            <p:column headerText="Date">
+                                <h:outputText value="#{temp.dateOfBirth}" />
+                            </p:column>
+                            <p:column headerText="Email address">
+                                <h:outputText value="#{temp.emailAddress}" />
+                            </p:column>
+                        </p:dataTable>
+                        <hr/>
+                    </div>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
