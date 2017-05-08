@@ -36,24 +36,6 @@ public abstract class Person {
         this.emailAddress = emailAddress;
     }
     
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
-    
-
     public Person(String firstname, String lastname, char gender, String address, String placeOfBirth, Date dateOfBirth, String emailAddress) {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -80,6 +62,24 @@ public abstract class Person {
         this.address = address;
     }
     
+     public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public Person() {
+    }
     
 
     

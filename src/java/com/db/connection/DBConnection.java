@@ -1,7 +1,6 @@
 package com.db.connection;
 import com.child.Model.Child;
 import com.models.OthantileStaff;
-import com.models.Staff;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -21,7 +20,7 @@ public class DBConnection {
 
     private String conString;
     //private List <OthantileStaff> users = new ArrayList<OthantilieStaff>();
-    private List<Staff> users = new ArrayList<>();
+    private List<OthantileStaff> staff = new ArrayList<>();
     private List<Child> child = new ArrayList<>();
     private final String dbUserName;
     private final String dbPassWord;
@@ -45,7 +44,7 @@ public class DBConnection {
         }
         return con;
     }
-    public List<Staff> getUsers() {
+    public List<OthantileStaff> getUsers() {
         try {
             conn = getConnection();
             stmt = (Statement) conn.createStatement();
@@ -67,7 +66,7 @@ public class DBConnection {
                 String email = rs.getString("emailAddress");
                 char gnd = gender.charAt(0);
                 // you can use column index or columnname
-                users.add(new Staff(user_id, firstname, lastname, gnd, address, placeOfBirth, date, email));
+                staff.add(new OthantileStaff(user_id, firstname, lastname, gnd, address, placeOfBirth, date, email));
                 //(`firstName`,`LastName`,`gender`,`address`,`placeOfBirth`,`dateOfBirth`,`emailAddress`
             }
         } catch (ClassNotFoundException | SQLException ex) {
@@ -81,30 +80,30 @@ public class DBConnection {
                 Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return users;
+        return staff;
     }
-    public void addUser(Staff user) throws ClassNotFoundException {
+    public void addUser(OthantileStaff staff) throws ClassNotFoundException {
         System.out.println("yessssssss");
         Connection connn = getConnection();
         PreparedStatement ps = null;
         /*INSERT INTO .`onthantilestaff`(`staffID`,`firstName`,`LastName`,`gender`,`address`,`placeOfBirth`,`dateOfBirth`,`emailAddress`) VALUES ();
          */ String sql = "INSERT INTO .`onthantilestaff`(`firstName`,`LastName`,`gender`,`address`,`placeOfBirth`,`dateOfBirth`,`emailAddress`) VALUES(?,?,?,?,?,?,?)";
         //String sql = "insert into onthantilestaff(firstName,LastName)values(?,?)";
-        System.out.printf(user.getFirstname(), user.getLastname());//staffID, firstName, LastName `onthatile children's ministries`.`onthantilestaff`
+        System.out.printf(staff.getFirstname(), staff.getLastname());//staffID, firstName, LastName `onthatile children's ministries`.`onthantilestaff`
         try {
             Date date = new Date();
-            date = user.getDateOfBirth();
+            date = staff.getDateOfBirth();
             java.util.Date utilStartDate = date;
             java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
             ps = connn.prepareStatement(sql);
-            ps.setString(1, user.getFirstname());
-            ps.setString(2, user.getLastname());
-            String g = Character.toString(user.getGender());
+            ps.setString(1, staff.getFirstname());
+            ps.setString(2, staff.getLastname());
+            String g = Character.toString(staff.getGender());
             ps.setString(3, g);
-            ps.setString(4, user.getAddress());
-            ps.setString(5, user.getPlaceOfBirth());
+            ps.setString(4, staff.getAddress());
+            ps.setString(5, staff.getPlaceOfBirth());
             ps.setDate(6, sqlStartDate);
-            ps.setString(7, user.getEmailAddress());
+            ps.setString(7, staff.getEmailAddress());
             ps.execute();
         } catch (SQLException ex) {
             Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
@@ -132,7 +131,7 @@ public class DBConnection {
             rs = ps.executeQuery();
             //staffID, firstName, LastName `onthatile children's ministries`.`onthantilestaff`
             if (rs.next()) {
-                user = new OthantileStaff(rs.getInt("staffID"), rs.getString("firstName"), rs.getString("emailLastName "));
+                //user = new OthantileStaff(rs.getInt("staffID"), rs.getString("firstName"), rs.getString("emailLastName "));
             } else {
                 return null;
             }

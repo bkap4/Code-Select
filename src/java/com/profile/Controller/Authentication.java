@@ -1,6 +1,6 @@
 
 package com.profile.Controller;
-import com.models.Staff;
+import com.models.OthantileStaff;
 import java.util.Date;
 import java.util.Random;
 import javax.faces.bean.ManagedBean;
@@ -12,7 +12,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean (name= "Authentication", eager= true)
 @SessionScoped
 
-public class Authentication extends Staff{
+public class Authentication extends OthantileStaff{
     
     private String userName;
     private String password;

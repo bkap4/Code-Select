@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:metadata>
+        <f:event type="preRenderView"
+                 listener="#{StaffMembers.loasSaffMember(param['id'])}"/>
+    </f:metadata>
+ 
+    <body>
+        
+        <h1>Update</h1>
+        <h:form>
+            
+            <p:growl id="msgs" showDetail="true" />
+            <!--cellpadding = "10" cellspacing = "1-->
+           
+            <h:panelGrid columns="4" cellpadding="30" >
+                
+                <h:panelGrid columns="1"  cellpadding="30" class="addStaff">
+                    <h:outputLabel value="Firstname: *" />
+                    <p:inputText value="#{StaffMembers.firstname}" required="true" label="Firstname"/>
+                </h:panelGrid>
+                <h:panelGrid columns="1"  cellpadding="30" class="addStaff">
+                    <h:outputLabel value="Lastname: *" />
+                    <p:inputText value="#{StaffMembers.lastname}" required="true" label="Lastname"/>
+                </h:panelGrid>
+                <h:panelGrid columns="2"  cellpadding="30" class="addStaff">
+                    <h:outputLabel value="Gender: *"  />
+                    <p:selectOneRadio id="Gender" value="#{StaffMembers.gender}" required="true" label="Gender">
+                        <f:selectItem itemLabel="Male" itemValue="M" />
+                        <f:selectItem itemLabel="Female" itemValue="F" />
+
+
+                    </p:selectOneRadio>
+                    <!-- <h:outputText value="Gender: *" />
+                     <p:selectOneButton value="#{StaffMembers.gender}" rendered="true">
+                        <f:selectItem itemLabel="Male" itemValue="M" />
+                        <f:selectItem itemLabel="Female" itemValue="F" />
+                    </p:selectOneButton>-->
+                  
+                </h:panelGrid>
+                <h:panelGrid columns="1"  cellpadding="30" class="addStaff">
+                    <h:outputLabel value="Address:* " />
+                    <p:inputText value="#{StaffMembers.address}" required="true" label="Address"/>
+                </h:panelGrid>
+                <h:panelGrid columns="1"  cellpadding="30" class="addStaff">
+                    <h:outputLabel value="Place of birth " />
+                    <p:inputText value="#{StaffMembers.placeOfBirth}" required="true" label="Place of birth"/>
+                </h:panelGrid>
+                <h:panelGrid columns="1"  cellpadding="30" class="addStaff">
+                    <h:outputLabel for="mask"    value="Date of birth: *" />
+                    <p:calendar id="mask" value="#{StaffMembers.dateOfBirth}" pattern="yyyy-MM-dd" mask="true" required="true" label="Date of birth" />
+                </h:panelGrid>
+                <h:panelGrid columns="1"  cellpadding="30" class="addStaff">
+                    <!--<h:outputLabel value="Email " />
+                    <p:inputText value="#{StaffMembers.emailAddress}" required="true" label="Email "/>-->
+                    <h:outputLabel value="Email:* " />
+                    <p:inputText id="email" value="#{StaffMembers.emailAddress}" required="true" label="Email" validatorMessage="#{StaffMembers.emailAddress} Email Not valid">
+                        <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                    </p:inputText>
+                    <p:message for="email" />
+                </h:panelGrid>
+                <h:panelGrid columns="1"  cellpadding="100" class="addStaff">
+                    <p:outputLabel for="role" value="Role:" />
+                    <p:selectOneMenu id="role" value="#{StaffMembers.role}" effect="fold" required="true">
+                        <f:selectItem itemLabel="Select a role" itemValue="" />
+                        <f:selectItems value="#{StaffMembers.roles}" />
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                
+                <div align="center"> 
+                    <h:inputHidden value="#{StaffMembers.staffID}"/>
+                    <h:commandButton value="Add Staff" action="#{StaffMembers.updateStaffRecord()}"  />
+
+                </div>
+            </h:panelGrid>
+        </h:form>
+    </body>
+   
+</html>
+

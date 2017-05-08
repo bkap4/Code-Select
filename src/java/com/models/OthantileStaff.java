@@ -1,24 +1,25 @@
 package com.models;
 
 /**
- * 
- * @author Barry Gray Kapelembe 
+ *
+ * @author efsan1
  */
-public class OthantileStaff {
+import com.models.Person;
+import com.profile.Controller.Authentication;
+import com.profile.Controller.Authentication;
+import com.profile.Controller.Message;
+import com.profile.Controller.Message;
+import java.util.Date;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+public class OthantileStaff extends Person implements Role {
+
     private int staffID;
-    private String firstname;
-    private String lastname;
-
-    public OthantileStaff(int staffID, String firstname, String lastname) {
-        this.staffID = staffID;
-        this.firstname = firstname;
-        this.lastname = lastname;
-    }
-
-    public OthantileStaff(String firstname, String lastname) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-    }
+    private Message massage;
+    private Authentication authcateDetails;
+    private int accesslevel;
+    private String roleName;
 
     public int getStaffID() {
         return staffID;
@@ -28,22 +29,81 @@ public class OthantileStaff {
         this.staffID = staffID;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public OthantileStaff(int staffID, String firstname, String lastname, char gender, String address, String placeOfBirth, Date dateOfBirth, String emailAddress) {
+        super(firstname, lastname, gender, address, placeOfBirth, dateOfBirth, emailAddress);
+        this.staffID = staffID;
+
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public OthantileStaff(String firstname, String lastname, char gender, String address, String placeOfBirth, Date dateOfBirth, String emailAddress) {
+        super(firstname, lastname, gender, address, placeOfBirth, dateOfBirth, emailAddress);
+
     }
 
-    public String getLastname() {
-        return lastname;
+    public OthantileStaff(String firstname, String lastname, char gender, String phoneNumber, String address, String placeOfBirth, Date dateOfBirth, String emailAddress) {
+        super(firstname, lastname, gender, phoneNumber, address, placeOfBirth, dateOfBirth, emailAddress);
+
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    /**
+     *
+     */
+    public OthantileStaff() {
     }
-    
-    
+
+    public Message getMassage() {
+        return massage;
+    }
+
+    public Authentication getAuthcateDetails() {
+        return authcateDetails;
+    }
+
+    public void setMassage(Message massage) {
+        this.massage = massage;
+    }
+
+    public void setAuthcateDetails(Authentication authcateDetails) {
+        this.authcateDetails = authcateDetails;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public int getAge() {
+        return 2;
+    }
+
+    @Override
+    public boolean setRoleName(String name) {
+        boolean setRole = false;
+        if (name.equals("Admin") || name.equals("Intern") || name.equals("Caregiver")) {
+            this.roleName = name;
+            setRole = true;
+        }
+        return setRole;
+    }
+
+    @Override
+    public String getRoleName() {
+        return roleName;
+    }
+
+    @Override
+    public boolean setAccessLevel(int acess) {
+        boolean setAccess = false;
+       if (acess==1 || acess == 2 || acess == 3){
+           accesslevel = acess;
+           setAccess = true;
+       }
+       return setAccess;
+    }
+
+    @Override
+    public int getAccessLevel() {
+       return accesslevel;
+    }
 
 }

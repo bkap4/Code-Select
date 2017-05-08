@@ -16,14 +16,15 @@ public  abstract class  DatabaseConnection {
     private String conString;
     private final String dbUserName;
     private final String dbPassWord;
-    private Connection conn = null;
-    private Statement stmt = null;
-    private ResultSet rs = null;
+    protected Connection connection = null;
+    protected Statement statement = null;
+    protected ResultSet resultset = null;
 
     public DatabaseConnection() {
         this.dbUserName = "onthatileDB";
         this.dbPassWord = "adminServer";
         conString = "jdbc:mysql://localhost:3306/onthatile children's ministries";
+        //jdbc:mysql://localhost:3306/?user=root
     }
 
     public Connection getConnection() throws ClassNotFoundException {

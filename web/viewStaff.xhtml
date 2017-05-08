@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <ui:composition>
+        <h:form>
+            <p:dataTable id="staff" var="temp" value="#{StaffMembers.allStaffMemebers}">
+                <f:facet name="header">
+                    Staff Members
+
+                    <p:commandButton id="toggler" type="button" value="Select Columns" style="float:right" icon="ui-icon-calculator" />
+                    <p:columnToggler datasource="staff" trigger="toggler" />
+                    <p:outputPanel>
+                        <h:outputText value="Search all fields:" />
+                        <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" placeholder="Enter keyword"/>
+                    </p:outputPanel>
+                </f:facet>
+                <p:column headerText="Staff ID" sortBy="#{temp.staffID}">
+                    <h:outputText value="#{temp.staffID}" />
+                </p:column>
+
+                <p:column headerText="First name" sortBy="#{temp.firstname}">
+                    <h:outputText value="#{temp.firstname}" />
+                </p:column>
+
+                <p:column headerText="Last name" sortBy="#{temp.lastname}">
+                    <h:outputText value="#{temp.lastname}" />
+                </p:column>
+
+                <p:column headerText="Gender" sortBy="#{temp.gender}">
+                    <h:outputText value="#{temp.gender}" />
+                </p:column>
+                <p:column headerText="Address" sortBy="#{temp.address}">
+                    <h:outputText value="#{temp.address}" />
+                </p:column>
+
+                <p:column headerText="Place of birth" sortBy="#{temp.placeOfBirth}">
+                    <h:outputText value="#{temp.placeOfBirth}" />
+                </p:column>
+
+                <p:column headerText="Date" sortBy="#{temp.dateOfBirth}">
+                    <h:outputText value="#{temp.dateOfBirth}" />
+                </p:column>
+                <p:column headerText="Email address" sortBy="#{temp.emailAddress}">
+                    <h:outputText value="#{temp.emailAddress}" />
+                </p:column>
+                <p:column headerText="Role" sortBy="#{temp.roleName}">
+                    <h:outputText value="#{temp.roleName}" />
+                </p:column>
+                <p:column headerText="Edit">
+                    <a href="upadateStaff.xhtml?id=#{temp.staffID}" onclick="">Update</a>
+                </p:column>
+                <p:column headerText="Remove">
+
+                    <h:commandLink value ="Delete" action="#{StaffMembers.deleteStaffMember(temp.staffID)}"
+                                   onclick="if (!confirm('Are you sure you want to delete staff member'))
+                                               return false"/>
+
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+    </ui:composition>
+
+</html>
+

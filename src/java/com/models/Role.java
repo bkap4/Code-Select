@@ -11,7 +11,7 @@ public interface Role {
     
     String getRoleName();
     
-    int setAccessLevel();
+    boolean setAccessLevel(int acess);
     
     int getAccessLevel();
 }
